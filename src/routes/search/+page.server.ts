@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ url }) => {
     return redirect(303, "/");
   }
 
-  const res = await fetch(`${env.API_URL}/search?q=${q}`)
+  const res = await fetch(`https://api.gitarchived.org/search?q=${q}`)
     .then((res) => res.json() as Promise<{ data: Search[] }>);
 
   return {
