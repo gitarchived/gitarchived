@@ -1,7 +1,3 @@
-<script>
-	import Card from '$lib/components/Card.svelte';
-</script>
-
 <svelte:head>
 	<title>GitArchived</title>
 </svelte:head>
