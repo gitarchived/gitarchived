@@ -1,5 +1,5 @@
 <script>
-	import '../app.css';
+	import "../app.css";
 </script>
 
 <div class="flex flex-col h-screen justify-between">
@@ -30,7 +30,10 @@
 			</a>
 		</div>
 	</nav>
-	<slot />
+
+	<main class="mb-auto">
+		<slot />
+	</main>
 	<footer class="p-12 flex justify-between bg-outline">
 		<div>
 			<p>Made and archived with ❤️ by <a href="https://github.com/gitarchived">GitArchived</a></p>

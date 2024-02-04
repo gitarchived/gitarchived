@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type { PageData } from './$types';
+	import type { PageData } from "./$types";
 
 	export let data: PageData;
 
 	const getDownloadLink = (name: string, id: number) => {
-		const repo = name.split('/')[1];
-		const repoURL = repo.split('').join('/');
+		const repo = name.split("/")[1];
+		const repoURL = repo.split("").join("/");
 
 		return `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:github/${repoURL}/${id.toString()}.zip`;
 	};
@@ -16,16 +16,18 @@
 </svelte:head>
 
 <main>
-	<div>
+	<div class="p-4 grid grid-cols-4">
 		{#each data.results as res}
-			<div class="bg-outline p-2 flex justify-between items-center">
-				<h1 class="text-xl font-bold pb-6 flex">
-					[{res.host}]
-					{res.name}
-				</h1>
-
+			<div class="bg-outline p-4 rounded">
+				<div>
+					<h1 class="text-2xl text-center font-bold pb-6">
+						{res.name}
+					</h1>
+				</div>
 				<a href={getDownloadLink(res.name, res.id)} target="_blank" rel="noopener noreferrer">
-					<button class="bg-primary p-2 px-4 text-black font-semibold rounded"> Download </button>
+					<button class="bg-primary p-2 px-4 text-black font-semibold rounded w-full">
+						Download
+					</button>
 				</a>
 			</div>
 		{/each}
