@@ -1,5 +1,13 @@
 <script>
+	import { onMount } from "svelte";
 	import "../app.css";
+
+	let query = "";
+
+	onMount(() => {
+		const search = new URLSearchParams(window.location.search);
+		query = search.get("q") || "";
+	});
 </script>
 
 <div class="flex flex-col h-screen justify-between">
@@ -18,6 +26,8 @@
 			<form action="/search" method="get">
 				<input
 					type="text"
+					name="q"
+					bind:value={query}
 					placeholder="Search on GitArchived..."
 					class="w-full p-1.5 px-3 rounded bg-background focus:outline-none"
 				/>
