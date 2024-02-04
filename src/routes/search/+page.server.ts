@@ -1,5 +1,4 @@
 import { redirect } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
 import type { PageServerLoad } from './$types';
 import type { Search } from '$lib/types/Search';
 
