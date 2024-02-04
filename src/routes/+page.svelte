@@ -37,12 +37,13 @@
 			<img src="/logo.png" alt="icon" class="w-40 h-40" />
 		</div>
 		<div class="w-1/2 space-y-2">
-			<h1 class="text-4xl font-bold">Never lose repositories again</h1>
+			<h1 class="text-4xl font-bold">Do you like? Don't lose it</h1>
 			<p class="text-lg">
-				GitArchived strives to crare an up-to-date archive of many open source repositories. By
-				preserving code on another repository you are safe from unforeseen events such as code
-				privatization or leakage.
+				Each person can add a repository to gitarchived! As long the repo follows a few rules:
 			</p>
+			<ul class="list-disc pl-6">
+				<li>It must have more than 100 stars</li>
+			</ul>
 		</div>
 	</div>
 </div>
