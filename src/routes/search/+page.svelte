@@ -5,7 +5,8 @@
 
 	const getDownloadLink = (name: string, id: number) => {
 		const repo = name.split("/")[1];
-		const repoURL = repo.split("").join("/");
+		let repoURL = repo.split("").join("/");
+		repoURL = repoURL.replace(/\./g, "-");
 
 		return `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:github/${repoURL}/${id.toString()}.zip`;
 	};
