@@ -8,7 +8,7 @@
 		let repoURL = repo.split("").join("/");
 		repoURL = repoURL.replace(/\./g, "-");
 
-		return `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:github/${repoURL}/${id.toString()}.zip`;
+		return `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:github/${repoURL}/${id.toString()}.bundle`;
 	};
 </script>
 
