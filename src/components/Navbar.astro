@@ -1,0 +1,20 @@
+---
+import { Image } from "astro:assets";
+import logo from "../images/gitarchived.png";
+---
+
+<nav class="flex items-center justify-between bg-stone-900 p-2">
+  <div class="flex items-center space-x-2">
+    <a href="/">
+      <Image src={logo} alt="GitArchived" width="50" />
+    </a>
+    <form action="/search" method="GET">
+      <input 
+        type="text" 
+        name="q"
+        placeholder="Search... (e.g. svelte)" 
+        class="focus:outline-none bg-stone-800 text-stone-100 p-1.5 px-3 rounded-md" 
+      />
+    </form>
+  </div>
+</nav>
