@@ -16,7 +16,7 @@ const { results } = res;
 ---
 
 <Layout title={`${query}`}>
-  <Navbar />
+  <Navbar query={query} />
   {
     results ? (
       <main class="h-screen">
