@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { repo } = Astro.props;
+console.log(repo);
 ---
 
 <a href={`/r/${repo.host}/${repo.owner}/${repo.name}`}>

@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Search from "./Search.svelte";
 import logo from "../images/gitarchived.png";
 
 interface Props {
@@ -9,19 +10,11 @@ interface Props {
 const { query } = Astro.props;
 ---
 
-<nav class="flex items-center justify-between bg-stone-900 p-2">
-  <div class="flex items-center space-x-2">
+<nav class="flex items-center bg-stone-900 px-6 py-4">
+  <div class="m-auto flex w-full max-w-screen-lg flex-col items-center justify-between sm:flex-row">
     <a href="/">
       <Image src={logo} alt="GitArchived" width="50" />
     </a>
-    <form action="/search" method="GET">
-      <input
-        type="text"
-        name="q"
-        value={query}
-        placeholder="Search... (e.g. svelte)"
-        class="rounded-md bg-stone-800 p-1.5 px-3 text-stone-100 focus:outline-none"
-      />
-    </form>
+    <Search client:load />
   </div>
 </nav>

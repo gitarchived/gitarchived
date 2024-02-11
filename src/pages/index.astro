@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import logo from "../images/gitarchived.png";
 import Search from "../components/Search.svelte";
+import Add from "../components/Add.svelte";
+import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -11,7 +13,7 @@ import Layout from "../layouts/Layout.astro";
       <div class="m-auto flex w-full max-w-screen-lg justify-center py-1 text-center font-bold">
         <span>
           GitArchived is in alpha. Join our
-          <a href="https://discord.gg/afE7trvbYj" target="_blank" class="underline">Discord</a> to report
+          <a href="https://discord.gg/3u6Ue5XfNZ" target="_blank" class="underline">Discord</a> to report
           bugs.
         </span>
       </div>
@@ -19,17 +21,8 @@ import Layout from "../layouts/Layout.astro";
     <main class="flex h-full w-full flex-col items-center justify-center gap-2">
       <Image src={logo} alt="GitArchived's logo" width="250" />
       <Search client:load />
+      <span>or <Add client:load />.</span>
     </main>
-    <footer
-      class="flex w-full flex-col items-center justify-center gap-2 border-t border-stone-50/10 p-2 text-white/90"
-    >
-      <span>Archived with 📦GitArchived.</span>
-      <span>
-        View the source on <a
-          href="https://github.com/gitarchived/gitarchived"
-          class="font-bold hover:underline">GitHub</a
-        >.
-      </span>
-    </footer>
+    <Footer />
   </div>
 </Layout>
