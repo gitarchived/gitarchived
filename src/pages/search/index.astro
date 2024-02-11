@@ -28,6 +28,7 @@ const { results } = res;
             <RepositoryCard repository={repo} />
           ))}
         </div>
+        <MissingDataWarning />
       </main>
     ) : (
       <div class="space-y-4 p-6 py-8 text-center">
@@ -37,6 +38,5 @@ const { results } = res;
       </div>
     )
   }
-  <MissingDataWarning />
   <Footer />
 </Layout>
