@@ -15,12 +15,12 @@ const { query } = Astro.props;
       <Image src={logo} alt="GitArchived" width="50" />
     </a>
     <form action="/search" method="GET">
-      <input 
-        type="text" 
+      <input
+        type="text"
         name="q"
         value={query}
-        placeholder="Search... (e.g. svelte)" 
-        class="focus:outline-none bg-stone-800 text-stone-100 p-1.5 px-3 rounded-md" 
+        placeholder="Search... (e.g. svelte)"
+        class="rounded-md bg-stone-800 p-1.5 px-3 text-stone-100 focus:outline-none"
       />
     </form>
   </div>

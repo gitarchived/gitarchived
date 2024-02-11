@@ -1,0 +1,68 @@
+---
+import Layout from "../../../../../layouts/Layout.astro";
+import Navbar from "../../../../../components/Navbar.astro";
+import type { Repository } from "../../../../../types";
+
+const { host, owner, name } = Astro.params;
+
+if (!host || !owner || !name) return Astro.redirect("/");
+
+const res = await fetch(`https://api.gitarchived.org/${host}/${owner}/${name}`).then(
+  (res) => res.json() as Promise<{ data: Repository; status: number }>,
+);
+
+const { data, status } = res;
+
+if (status !== 200) return Astro.redirect("/");
+
+const backslashName = data.name.split("").join("/");
+const downloadUrl = `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:${data.host}/${backslashName}/${data.id}.bundle`;
+---
+
+<Layout title={`${owner}/${name} - ${host}`}>
+  <Navbar />
+
+  <main>
+    <div class="items-center justify-between border border-stone-900 p-4 md:flex md:px-9 md:py-6">
+      <h1 class="text-3xl font-bold">{owner}/{name}</h1>
+
+      <div class="pt-3 md:pt-0">
+        <a href={downloadUrl} target="_blank" download>
+          <button
+            class="mt-2 w-full rounded-md bg-stone-700 px-6 py-2 text-white hover:opacity-80 md:w-fit"
+          >
+            Download
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid-cols-4 gap-4 px-5 py-3 md:grid">
+      <div>
+        <h3 class="mt-6 text-xl font-bold">Status</h3>
+        <p class="mt-2 rounded-md bg-stone-900 px-4 py-2">{data.deleted ? "Deleted" : "Active"}</p>
+      </div>
+      <div>
+        <h3 class="mt-6 text-xl font-bold">First Archived</h3>
+        <p class="mt-2 rounded-md bg-stone-900 px-4 py-2">
+          {new Date(data.createdAt).toLocaleString()}
+        </p>
+      </div>
+      <div>
+        <h3 class="mt-6 text-xl font-bold">Host</h3>
+        <p class="mt-2 rounded-md bg-stone-900 px-4 py-2">{data.host}</p>
+      </div>
+      <div>
+        <h3 class="mt-6 text-xl font-bold">Last Commit</h3>
+        <p class="mt-2 overflow-scroll rounded-md bg-stone-900 px-4 py-2">
+          {data.lastCommit}
+        </p>
+      </div>
+    </div>
+    <footer class="mt-6 px-5 py-3 text-center italic opacity-60">
+      Missing some information? We are working hard on it! In the future, we will provide more <br
+      />
+      information about the repository, like files, last 100 commit history, and more. Stay tuned!
+    </footer>
+  </main>
+</Layout>
