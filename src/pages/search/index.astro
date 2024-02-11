@@ -5,6 +5,7 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import type { Repository } from "../../types";
 import RepositoryCard from "../../components/RepositoryCard.astro";
+import MissingDataWarning from "../../components/MissingDataWarning.astro";
 
 const query = Astro.url.searchParams.get("q");
 
@@ -36,5 +37,6 @@ const { results } = res;
       </div>
     )
   }
+  <MissingDataWarning />
   <Footer />
 </Layout>
