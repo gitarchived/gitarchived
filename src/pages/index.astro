@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../images/gitarchived.png";
+import Search from "../components/Search.svelte";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -15,8 +16,9 @@ import Layout from "../layouts/Layout.astro";
         </span>
       </div>
     </div>
-    <main class="flex h-full w-full items-center justify-center">
+    <main class="flex h-full w-full flex-col items-center justify-center gap-2">
       <Image src={logo} alt="GitArchived's logo" width="250" />
+      <Search client:load />
     </main>
     <footer
       class="flex w-full flex-col items-center justify-center gap-2 border-t border-stone-50/10 p-2 text-white/90"
