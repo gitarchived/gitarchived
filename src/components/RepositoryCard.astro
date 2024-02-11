@@ -1,0 +1,57 @@
+---
+import type { Repository } from "../types";
+import downloadIcon from "../images/download.svg";
+
+interface Props {
+  repository: Repository;
+}
+
+const { repository } = Astro.props;
+
+const backslashName = repository.name.split("").join("/");
+const downloadUrl = `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:${repository.host}/${backslashName}/${repository.id}.bundle`;
+---
+
+<div class="flex w-full flex-col gap-2 rounded-lg border border-stone-50/10 p-3">
+  <div class="flex w-full items-center justify-between">
+    <span class="flex items-center text-2xl font-bold">
+      <span class="text-white/50">
+        {`${repository.owner}/`}
+      </span><span>{repository.name}</span>
+      <span
+        class={`ml-2 rounded-full border px-1 text-xs font-normal ${repository.deleted ? "text-red-400 border-red-400" : "text-green-400 border-green-400"}`}
+      >
+        {repository.deleted ? "Deleted" : "Active"}
+      </span>
+    </span>
+    {
+      repository.lastCommit ? (
+        <a href={downloadUrl} target="_blank" download>
+          <button class="flex gap-1 rounded-full border border-stone-50/10 bg-stone-900 px-2 py-1 text-sm hover:underline">
+            <img src={downloadIcon.src} />
+            Download
+          </button>
+        </a>
+      ) : (
+        <span class="text-sm italic text-white/50">Downloadable soon...</span>
+      )
+    }
+  </div>
+
+  <div class="rounded-lg border border-stone-50/10 bg-stone-900 p-2">
+    <div>
+      <span class="font-bold">Host:</span>
+      <span>{repository.host}</span>
+    </div>
+    {
+      repository.lastCommit ? (
+        <div>
+          <span class="font-bold">Last commit:</span>
+          <span>{repository.lastCommit.substring(0, 8)}</span>
+        </div>
+      ) : (
+        <div />
+      )
+    }
+  </div>
+</div>

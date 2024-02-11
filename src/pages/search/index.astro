@@ -2,7 +2,9 @@
 import Layout from "../../layouts/Layout.astro";
 import Card from "../../components/Card.astro";
 import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
 import type { Repository } from "../../types";
+import RepositoryCard from "../../components/RepositoryCard.astro";
 
 const query = Astro.url.searchParams.get("q");
 
@@ -19,10 +21,10 @@ const { results } = res;
   <Navbar query={query} />
   {
     results ? (
-      <main class="h-screen">
-        <div class="gap-4 p-4 md:grid md:grid-cols-4">
-          {results.map((result) => (
-            <Card repo={result} />
+      <main class="px-6">
+        <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
+          {results.map((repo) => (
+            <RepositoryCard repository={repo} />
           ))}
         </div>
       </main>
@@ -38,4 +40,5 @@ const { results } = res;
       </div>
     )
   }
+  <Footer />
 </Layout>
