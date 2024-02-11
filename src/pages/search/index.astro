@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Card from "../../components/Card.astro";
+import Add from "../../components/Add.svelte";
 import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import type { Repository } from "../../types";
@@ -29,14 +29,10 @@ const { results } = res;
         </div>
       </main>
     ) : (
-      <div class="space-y-4 p-4 text-center">
-        <h1 class="text-center text-4xl font-bold">fatal: repository '{query}' not found</h1>
-        <p>
-          As today, no one has archived this repository. <br />
-          <a href="new" class="italic">
-            Be the first one to archive it!
-          </a>
-        </p>
+      <div class="space-y-4 p-6 py-8 text-center">
+        <h1 class="text-center text-4xl font-bold">We searched far and wide...</h1>
+        <p>As of today, no one has archived this repository.</p>
+        <Add buttonText="Archive it yourself." client:load />
       </div>
     )
   }

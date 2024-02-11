@@ -2,6 +2,7 @@
   import plusIcon from "../images/plus.svg";
   import closeIcon from "../images/x.svg";
   import { fade } from "svelte/transition";
+  export let buttonText = "add a new repo";
   let modalEnabled = false;
   let errorMessage = "";
   let repoName = "";
@@ -67,5 +68,5 @@
 {/if}
 
 <button class="cursor-pointer font-bold underline" on:click={() => (modalEnabled = true)}>
-  add a new repo
+  {buttonText}
 </button>
