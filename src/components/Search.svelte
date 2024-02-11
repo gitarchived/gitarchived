@@ -58,7 +58,7 @@
 </script>
 
 <form
-  action="q"
+  action="/search"
   autocomplete="off"
   class="w-fit"
   bind:this={searchForm}
