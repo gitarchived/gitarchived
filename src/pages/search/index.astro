@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Add from "../../components/Add.svelte";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import type { Repository } from "../../types";
+import RepositoryCard from "../../components/RepositoryCard.astro";
+import MissingDataWarning from "../../components/MissingDataWarning.astro";
+
+const query = Astro.url.searchParams.get("q");
+
+if (!query) return Astro.redirect("/");
+
+const res = await fetch(`https://api.gitarchived.org/search?q=${query}`).then(
+  (res) => res.json() as Promise<{ results: Repository[] }>,
+);
+
+const { results } = res;
+---
+
+<Layout title={`${query}`}>
+  <Navbar query={query} />
+  {
+    results ? (
+      <main class="px-6">
+        <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
+          {results.map((repo) => (
+            <RepositoryCard repository={repo} />
+          ))}
+        </div>
+        <MissingDataWarning />
+      </main>
+    ) : (
+      <div class="space-y-4 p-6 py-8 text-center">
+        <h1 class="text-center text-4xl font-bold">We searched far and wide...</h1>
+        <p>As of today, no one has archived this repository.</p>
+        <Add buttonText="Archive it yourself." client:load />
+      </div>
+    )
+  }
+  <Footer />
+</Layout>

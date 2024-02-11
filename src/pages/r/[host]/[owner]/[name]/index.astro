@@ -1,0 +1,32 @@
+---
+import Layout from "../../../../../layouts/Layout.astro";
+import Navbar from "../../../../../components/Navbar.astro";
+import Footer from "../../../../../components/Footer.astro";
+import MissingDataWarning from "../../../../../components/MissingDataWarning.astro";
+import RepositoryCard from "../../../../../components/RepositoryCard.astro";
+import type { Repository } from "../../../../../types";
+
+const { host, owner, name } = Astro.params;
+
+if (!host || !owner || !name) return Astro.redirect("/");
+
+const res = await fetch(`https://api.gitarchived.org/${host}/${owner}/${name}`).then(
+  (res) => res.json() as Promise<{ data: Repository; status: number }>,
+);
+
+const { data, status } = res;
+
+if (status !== 200) return Astro.redirect("/");
+---
+
+<Layout title={`${owner}/${name} - ${host}`}>
+  <Navbar />
+
+  <main class="px-6">
+    <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
+      <RepositoryCard repository={data} />
+    </div>
+  </main>
+  <MissingDataWarning />
+  <Footer />
+</Layout>
