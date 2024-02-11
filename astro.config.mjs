@@ -9,6 +9,6 @@ export default defineConfig({
   output: "server",
   integrations: [tailwind(), svelte()],
   adapter: cloudflare({
-    mode: "directory",
-  }),
+    mode: "directory"
+  })
 });
