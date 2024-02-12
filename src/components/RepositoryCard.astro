@@ -8,7 +8,7 @@ interface Props {
 
 const { repository } = Astro.props;
 
-const backslashName = repository.name.split("").join("/");
+const backslashName = repository.name.split("").join("/").replaceAll(".", "-");
 const downloadUrl = `https://eu2.contabostorage.com/804ba90921c840faaef217da994b795a:${repository.host}/${backslashName}/${repository.id}.bundle`;
 ---
 
