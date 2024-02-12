@@ -37,12 +37,15 @@ devDependencies:
   prettier-plugin-astro:
     specifier: ^0.13.0
     version: 0.13.0
+  prettier-plugin-organize-imports:
+    specifier: ^3.2.4
+    version: 3.2.4(prettier@3.2.5)(typescript@5.3.3)
   prettier-plugin-svelte:
     specifier: ^3.1.2
     version: 3.1.2(prettier@3.2.5)(svelte@4.2.10)
   prettier-plugin-tailwindcss:
     specifier: ^0.5.11
-    version: 0.5.11(prettier-plugin-astro@0.13.0)(prettier-plugin-svelte@3.1.2)(prettier@3.2.5)
+    version: 0.5.11(prettier-plugin-astro@0.13.0)(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-svelte@3.1.2)(prettier@3.2.5)
 
 packages:
 
@@ -3392,6 +3395,23 @@ packages:
       prettier: 3.2.5
       sass-formatter: 0.7.9
 
+  /prettier-plugin-organize-imports@3.2.4(prettier@3.2.5)(typescript@5.3.3):
+    resolution: {integrity: sha512-6m8WBhIp0dfwu0SkgfOxJqh+HpdyfqSSLfKKRZSFbDuEQXDDndb8fTpRWkUrX/uBenkex3MgnVk0J3b3Y5byog==}
+    peerDependencies:
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
+      '@volar/vue-typescript':
+        optional: true
+    dependencies:
+      prettier: 3.2.5
+      typescript: 5.3.3
+    dev: true
+
   /prettier-plugin-svelte@3.1.2(prettier@3.2.5)(svelte@4.2.10):
     resolution: {integrity: sha512-7xfMZtwgAWHMT0iZc8jN4o65zgbAQ3+O32V6W7pXrqNvKnHnkoyQCGCbKeUyXKZLbYE0YhFRnamfxfkEGxm8qA==}
     peerDependencies:
@@ -3402,7 +3422,7 @@ packages:
       svelte: 4.2.10
     dev: true
 
-  /prettier-plugin-tailwindcss@0.5.11(prettier-plugin-astro@0.13.0)(prettier-plugin-svelte@3.1.2)(prettier@3.2.5):
+  /prettier-plugin-tailwindcss@0.5.11(prettier-plugin-astro@0.13.0)(prettier-plugin-organize-imports@3.2.4)(prettier-plugin-svelte@3.1.2)(prettier@3.2.5):
     resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -3453,6 +3473,7 @@ packages:
     dependencies:
       prettier: 3.2.5
       prettier-plugin-astro: 0.13.0
+      prettier-plugin-organize-imports: 3.2.4(prettier@3.2.5)(typescript@5.3.3)
       prettier-plugin-svelte: 3.1.2(prettier@3.2.5)(svelte@4.2.10)
     dev: true
 
@@ -4227,7 +4248,6 @@ packages:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
     engines: {node: '>=14.17'}
     hasBin: true
-    dev: false
 
   /undici@5.28.3:
     resolution: {integrity: sha512-3ItfzbrhDlINjaP0duwnNsKpDQk3acHI3gVJ1z4fmwMK31k5G9OVIAMLSIaP6w4FaGkaAkN6zaQO9LUvZ1t7VA==}
