@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { onMount, onDestroy } from "svelte";
+  import { onMount } from "svelte";
   import searchIcon from "../images/search.svg";
   const isBrowser = import.meta.env.SSR === false;
+
+  export let query: string = "";
 
   let inputIsFocused = false;
   let searchForm: HTMLFormElement;
@@ -18,7 +20,7 @@
     }
   });
 
-  let searchQuery = "";
+  let searchQuery = query;
 
   function handleInput(event: Event) {
     const target = event.target as HTMLInputElement;
@@ -43,12 +45,13 @@
   async function fetchResults() {
     if (searchQuery.length > 0) {
       const response = await fetch(`https://api.gitarchived.org/search?q=${searchQuery}`);
-      if (true) {
-        console.log("did i get here");
+      if (response.ok) {
         const formattedResponse = await response.json();
         if (!formattedResponse) return;
+
         const results = formattedResponse.results;
         if (!results) return (searchResults = []);
+
         searchResults = results.slice(0, 3);
       }
     } else {
