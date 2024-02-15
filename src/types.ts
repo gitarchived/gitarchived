@@ -7,3 +7,9 @@ export type Repository = {
   createdAt: number;
   lastCommit: string;
 };
+
+export type Events = {
+  recieved: {
+    update: number;
+  }
+};
