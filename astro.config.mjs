@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://gitarchived.org",
   output: "server",
   integrations: [tailwind(), svelte(), mdx(), sitemap()],
   adapter: cloudflare({
