@@ -9,7 +9,7 @@ interface Props {
 const { repository } = Astro.props;
 
 const backslashName = repository.name.split("").join("/").replaceAll(".", "-");
-const downloadUrl = `https://o1g2.c12.e2-2.dev/${repository.host}/${backslashName}/${repository.id}.bundle`;
+const downloadUrl = `https://cdn.gitarchived.org/${repository.host}/${backslashName}/${repository.id}.bundle`;
 ---
 
 <div class="flex w-full flex-col gap-2 rounded-lg border border-stone-50/10 p-3">
