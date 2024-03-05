@@ -2,6 +2,7 @@
   import plusIcon from "../images/plus.svg";
   import closeIcon from "../images/x.svg";
   import { fade } from "svelte/transition";
+  import { isLink } from "../utils/isLink";
 
   export let buttonText = "add a new repo";
 
@@ -60,7 +61,9 @@
           <img src={plusIcon.src} alt="search" class="absolute left-2 top-2" />
         </div>
         <button
-          class="h-9 w-full rounded-lg bg-[#F1502F] ring-orange-600/50 focus:outline-none focus:ring"
+          data-clickable={isLink(repoName)}
+          disabled={!isLink(repoName)}
+          class="h-9 w-full rounded-lg bg-[#F1502F] ring-orange-600/50 duration-150 focus:outline-none data-[clickable=false]:cursor-not-allowed data-[clickable=false]:opacity-50"
         >
           Submit
         </button>
