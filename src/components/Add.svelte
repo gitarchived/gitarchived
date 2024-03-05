@@ -11,6 +11,10 @@
   let repoName = "";
   let isLoading = false;
 
+  const handleClickOutside = (e: Event) => {
+    if (e.target === e.currentTarget) modalEnabled = false;
+  };
+
   const handleSubmit = (e: Event) => {
     e.preventDefault();
 
@@ -40,6 +44,8 @@
   <div
     class="absolute left-0 top-0 flex h-screen w-full items-center justify-center bg-black/40"
     transition:fade={{ delay: 0, duration: 100 }}
+    on:click={handleClickOutside}
+    aria-hidden="true"
   >
     <div
       class="flex h-screen w-full flex-col items-center justify-center rounded-lg bg-stone-800 p-4 sm:h-min sm:max-w-sm"
