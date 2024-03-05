@@ -1,12 +1,22 @@
 <footer
-  class="flex w-full flex-col items-center justify-center gap-2 border-t border-stone-50/10 p-2 text-white/90"
+  class="flex w-full items-center justify-between gap-2 border-t border-stone-50/10 bg-stone-900 p-5 text-white/90"
 >
-  <span>Archived with 📦 GitArchived.</span>
-  <span>
-    <a href="https://github.com/gitarchived/gitarchived" class="font-bold underline">GitHub</a>
-    |
-    <a href="/faq" class="font-bold underline">Faq</a>
-    |
-    <a href="/about" class="font-bold underline">About</a>
-  </span>
+  <div>
+    <h3 class="text-xl font-bold">GitArchived</h3>
+    <p class="text-sm opacity-75">
+      Distributed under the GNU General Public License v3.0. <br />
+      Source available on
+      <a class="italic underline" href="https://githuv.com/gitarchived"> GitHub </a>
+    </p>
+  </div>
+
+  <div class="flex flex-col items-end">
+    <div>
+      <a href="/faq" class="hover:underline">FAQ</a> |
+      <a href="/about/terms" class="hover:underline">Terms</a> |
+      <a href="/about" class="hover:underline">About</a>
+    </div>
+    <br />
+    <a href="mailto:info@gitarchived.org" class="italic opacity-75"> info@gitarchived.org </a>
+  </div>
 </footer>
