@@ -2,11 +2,37 @@
   import plusIcon from "../images/plus.svg";
   import closeIcon from "../images/x.svg";
   import { fade } from "svelte/transition";
+
   export let buttonText = "add a new repo";
+
   let modalEnabled = false;
   let errorMessage = "";
   let repoName = "";
   let isLoading = false;
+
+  const handleSubmit = (e: Event) => {
+    e.preventDefault();
+
+    if (isLoading) return;
+    if (!repoName || repoName === "") return (errorMessage = "Missing URL.");
+
+    isLoading = true;
+
+    fetch("https://api.gitarchived.org/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        url: repoName,
+      }),
+    }).then(async (data) => {
+      isLoading = false;
+      const parsedData = await data.json();
+
+      if (parsedData.status !== 200) return (errorMessage = parsedData.message);
+
+      location.href = `/r/${parsedData.host}/${parsedData.owner}/${parsedData.name}`;
+    });
+  };
 </script>
 
 {#if modalEnabled}
@@ -23,28 +49,7 @@
           <img src={closeIcon.src} alt="search" />
         </button>
       </div>
-      <form
-        class="flex w-full flex-col gap-2 pt-2"
-        on:submit={(e) => {
-          e.preventDefault();
-          if (isLoading) return;
-          if (!repoName || repoName === "") return (errorMessage = "Missing URL.");
-          isLoading = true;
-          console.log(repoName);
-          fetch("https://api.gitarchived.org/create", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              url: repoName,
-            }),
-          }).then(async (data) => {
-            isLoading = false;
-            const parsedData = await data.json();
-            if (parsedData.status !== 200) return (errorMessage = parsedData.message);
-            location.href = `/r/${parsedData.host}/${parsedData.owner}/${parsedData.name}`;
-          });
-        }}
-      >
+      <form class="flex w-full flex-col gap-2 pt-2" on:submit={handleSubmit}>
         <div class="relative">
           <input
             type="text"
