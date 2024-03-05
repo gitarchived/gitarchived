@@ -1,7 +1,5 @@
 ---
 import Layout from "../../../../../layouts/Layout.astro";
-import Navbar from "../../../../../components/Navbar.astro";
-import Footer from "../../../../../components/Footer.astro";
 import MissingDataWarning from "../../../../../components/MissingDataWarning.astro";
 import RepositoryCard from "../../../../../components/RepositoryCard.astro";
 import type { Repository } from "../../../../../types";
@@ -20,13 +18,10 @@ if (status !== 200) return Astro.redirect("/");
 ---
 
 <Layout title={`${owner}/${name} - ${host}`}>
-  <Navbar />
-
-  <main class="px-6">
+  <div class="px-6">
     <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
       <RepositoryCard repository={data} />
     </div>
-  </main>
+  </div>
   <MissingDataWarning />
-  <Footer />
 </Layout>
