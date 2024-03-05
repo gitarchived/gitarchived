@@ -15,7 +15,7 @@
     e.preventDefault();
 
     if (isLoading) return;
-    if (!repoName || repoName === "") return (errorMessage = "Missing URL.");
+    if (!repoName || !isLink(repoName)) return (errorMessage = "Missing URL.");
 
     isLoading = true;
 
