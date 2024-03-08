@@ -42,7 +42,7 @@
 
 {#if modalEnabled}
   <div
-    class="absolute left-0 top-0 flex h-screen w-full items-center justify-center bg-black/40"
+    class="absolute left-0 top-0 z-10 flex h-screen w-full items-center justify-center bg-black/40"
     transition:fade={{ delay: 0, duration: 100 }}
     on:click={handleClickOutside}
     aria-hidden="true"

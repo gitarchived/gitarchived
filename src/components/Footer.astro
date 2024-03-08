@@ -1,22 +1,24 @@
 <footer
-  class="flex w-full items-center justify-between gap-2 border-t border-stone-50/10 bg-stone-900 p-5 text-white/90"
+  class="w-full items-center gap-2 space-y-2 border-t border-stone-50/10 bg-stone-900 p-5 text-center text-white/90 md:flex md:justify-between md:text-left"
 >
   <div>
     <h3 class="text-xl font-bold">GitArchived</h3>
     <p class="text-sm opacity-75">
-      Distributed under the GNU General Public License v3.0. <br />
+      Distributed under the GPL v3.0 License. <br />
       Source available on
       <a class="italic underline" href="https://githuv.com/gitarchived"> GitHub </a>
     </p>
   </div>
 
-  <div class="flex flex-col items-end">
+  <div class="flex flex-col md:items-end">
     <div>
       <a href="/faq" class="hover:underline">FAQ</a> |
       <a href="/about/terms" class="hover:underline">Terms</a> |
       <a href="/about" class="hover:underline">About</a>
     </div>
     <br />
-    <a href="mailto:info@gitarchived.org" class="italic opacity-75"> info@gitarchived.org </a>
+    <a href="mailto:info@gitarchived.org" class="hidden italic opacity-75 md:block">
+      info@gitarchived.org
+    </a>
   </div>
 </footer>
