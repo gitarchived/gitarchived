@@ -17,7 +17,7 @@ const { data, status } = res;
 if (status !== 200) return Astro.redirect("/");
 ---
 
-<Layout title={`${owner}/${name} - ${host}`}>
+<Layout title={`${owner}/${name} - ${host}`} navbar footer>
   <div class="px-6">
     <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
       <RepositoryCard repository={data} />
