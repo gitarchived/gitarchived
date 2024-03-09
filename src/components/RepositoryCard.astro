@@ -10,20 +10,12 @@ const { repository } = Astro.props;
 
 const backslashName = repository.name.split("").join("/").replaceAll(".", "-");
 const downloadUrl = `https://cdn.gitarchived.org/${repository.host}/${backslashName}/${repository.id}.bundle`;
-
-const getTextSize = (text: string) => {
-  return text.length > 20 ? "text-xl" : "text-2xl";
-};
 ---
 
 <div class="flex w-full flex-col gap-2 rounded-lg border border-stone-50/10 p-3">
   <div class="flex w-full flex-col items-center justify-between gap-2 md:flex-row">
-    <!--
-      idk why the data attributes don't work, I will figure it out but now I want to go try the new season of fortnite
-    -->
     <span
-      class={"flex items-center font-bold text-white md:text-2xl " +
-        getTextSize(repository.name + repository.owner)}
+      class={`flex items-center font-bold text-white md:text-2xl ${repository.owner.length + repository.name.length > 20 ? "text-xl" : "text-2xl"}`}
     >
       <span class="text-white/50">
         {`${repository.owner}/`}
