@@ -1,15 +1,12 @@
 ---
 import type { Repository } from "../types";
-import downloadIcon from "../images/download.svg";
+import Download from "./Download.svelte";
 
 interface Props {
   repository: Repository;
 }
 
 const { repository } = Astro.props;
-
-const backslashName = repository.name.split("").join("/").replaceAll(".", "-");
-const downloadUrl = `https://cdn.gitarchived.org/${repository.host}/${backslashName}/${repository.id}.bundle`;
 ---
 
 <div class="flex w-full flex-col gap-2 rounded-lg border border-stone-50/10 p-3">
@@ -29,12 +26,7 @@ const downloadUrl = `https://cdn.gitarchived.org/${repository.host}/${backslashN
     </span>
     {
       repository.lastCommit ? (
-        <a href={downloadUrl} target="_blank" download class="w-full md:w-fit">
-          <button class="flex w-full items-center justify-center gap-1 rounded-lg border border-stone-50/10 bg-stone-900 p-2 text-sm hover:underline md:w-fit">
-            <img src={downloadIcon.src} />
-            Download
-          </button>
-        </a>
+        <Download client:load repository={repository} />
       ) : (
         <span class="text-sm italic text-white/50">Downloadable soon...</span>
       )
