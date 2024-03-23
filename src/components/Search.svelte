@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import searchIcon from "../images/search.svg";
+  import searchIcon from "@images/search.svg";
   const isBrowser = import.meta.env.SSR === false;
 
   export let query: string = "";
@@ -79,7 +79,7 @@
       on:input={handleInput}
       class="h-9 w-full max-w-sm rounded-lg border border-stone-50/10 bg-stone-800 px-8 ring-stone-50/10 focus:outline-none focus:ring"
     />
-    <img src={searchIcon.src} alt="search" class="absolute left-2 top-2" />
+    <img src={searchIcon.src} alt="search" class="absolute left-2 top-2 select-none" />
     {#if searchQuery && searchQuery !== "" && searchResults.length > 0 && inputIsFocused}
       <div
         class="absolute z-50 mt-2 flex w-full flex-col overflow-hidden rounded-lg border border-stone-50/10 bg-stone-800"

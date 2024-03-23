@@ -1,8 +1,8 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import type { Repository } from "../types";
-  import downloadIcon from "../images/download.svg";
-  import closeIcon from "../images/x.svg";
+  import type { Repository } from "@types";
+  import downloadIcon from "@images/download.svg";
+  import closeIcon from "@images/x.svg";
 
   export let repository: Repository;
 

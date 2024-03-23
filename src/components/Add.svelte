@@ -1,8 +1,8 @@
 <script lang="ts">
-  import plusIcon from "../images/plus.svg";
-  import closeIcon from "../images/x.svg";
+  import plusIcon from "@images/plus.svg";
+  import closeIcon from "@images/x.svg";
   import { fade } from "svelte/transition";
-  import { isLink } from "../utils/isLink";
+  import { isLink } from "@utils/isLink";
 
   export let buttonText = "add a new repo";
 

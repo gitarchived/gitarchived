@@ -1,9 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Add from "../../components/Add.svelte";
-import type { Repository } from "../../types";
-import RepositoryCard from "../../components/RepositoryCard.astro";
-import MissingDataWarning from "../../components/MissingDataWarning.astro";
+import Layout from "@layouts/Layout.astro";
+import Add from "@components/Add.svelte";
+import type { Repository } from "@types";
+import RepositoryCard from "@components/RepositoryCard.astro";
+import MissingDataWarning from "@components/MissingDataWarning.astro";
 
 const query = Astro.url.searchParams.get("q");
 
