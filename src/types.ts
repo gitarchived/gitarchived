@@ -11,5 +11,5 @@ export type Repository = {
 export type Events = {
   recieved: {
     update: number;
-  }
+  };
 };

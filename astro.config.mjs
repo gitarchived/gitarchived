@@ -1,9 +1,9 @@
-import { defineConfig } from "astro/config";
 import cloudflare from "@astrojs/cloudflare";
-import tailwind from "@astrojs/tailwind";
-import svelte from "@astrojs/svelte";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import svelte from "@astrojs/svelte";
+import tailwind from "@astrojs/tailwind";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +11,6 @@ export default defineConfig({
   output: "server",
   integrations: [tailwind(), svelte(), mdx(), sitemap()],
   adapter: cloudflare({
-    mode: "directory"
-  })
+    mode: "directory",
+  }),
 });

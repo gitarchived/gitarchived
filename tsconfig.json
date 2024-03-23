@@ -7,7 +7,7 @@
       "@layouts/*": ["src/layouts/*"],
       "@images/*": ["src/images/*"],
       "@utils/*": ["src/utils/*"],
-      "@types": ["src/types.ts"],
-    },
-  },
+      "@types": ["src/types.ts"]
+    }
+  }
 }
