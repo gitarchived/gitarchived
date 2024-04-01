@@ -4,23 +4,25 @@ import MissingDataWarning from "@components/MissingDataWarning.astro";
 import RepositoryCard from "@components/RepositoryCard.astro";
 import type { Repository } from "@types";
 
-const { host, owner, name } = Astro.params;
+const { host, owner } = Astro.params;
 
-if (!host || !owner || !name) return Astro.redirect("/");
+if (!host || !owner) return Astro.redirect("/");
 
-const res = await fetch(`https://api.gitarchived.org/${host}/${owner}/${name}`).then(
-  (res) => res.json() as Promise<{ data: Repository; status: number }>,
+const res = await fetch(`https://api.gitarchived.org/${host}/${owner}`).then(
+  (res) => res.json() as Promise<{ results: Repository[]; status: number }>,
 );
 
-const { data, status } = res;
+const { results, status } = res;
 
 if (status !== 200) return Astro.redirect("/");
 ---
 
-<Layout title={`${owner}/${name} - ${host}`} navbar footer>
+<Layout title={`${owner} - ${host}`} navbar footer>
   <div class="px-6">
     <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
-      <RepositoryCard repository={data} />
+      {results.map((data) => (
+        <RepositoryCard repository={data} />
+      ))}
     </div>
   </div>
   <MissingDataWarning />
