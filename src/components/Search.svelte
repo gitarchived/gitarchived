@@ -73,8 +73,8 @@
       on:focus={(e) => e.currentTarget.select()}
       type="text"
       placeholder="Search GitArchived"
+      value={searchQuery}
       bind:this={searchInput}
-      bind:value={searchQuery}
       on:focusin={() => (inputIsFocused = true)}
       on:input={handleInput}
       class="h-9 w-full max-w-sm rounded-lg border border-stone-50/10 bg-stone-800 px-8 ring-stone-50/10 focus:outline-none focus:ring"

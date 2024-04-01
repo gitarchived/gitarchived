@@ -16,7 +16,7 @@ const res = await fetch(`https://api.gitarchived.org/search?q=${query}`).then(
 const { results } = res;
 ---
 
-<Layout title={`${query}`} navbar footer>
+<Layout title={`${query}`} navbar footer {query}>
   {
     results ? (
       <div class="px-6">

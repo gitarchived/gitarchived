@@ -7,9 +7,10 @@ interface Props {
   navbar?: boolean;
   footer?: boolean;
   class?: string;
+  query?: string;
 }
 
-const { title, navbar, footer } = Astro.props;
+const { title, navbar, footer, query } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,7 +29,7 @@ const { title, navbar, footer } = Astro.props;
   </head>
   <body class="flex h-screen flex-col justify-between bg-stone-800 text-white">
     <header>
-      {navbar && <Navbar />}
+      {navbar && <Navbar {query} />}
     </header>
     <main class="mb-auto">
       <slot />
