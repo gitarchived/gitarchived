@@ -1,7 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import MissingDataWarning from "@components/MissingDataWarning.astro";
-import RepositoryCard from "@components/RepositoryCard.astro";
+import RepositoryCard from "@components/RepositoryCard.svelte";
 import type { Repository } from "@types";
 
 const { host, owner } = Astro.params;
@@ -20,9 +20,7 @@ if (status !== 200) return Astro.redirect("/");
 <Layout title={`${owner} - ${host}`} navbar footer>
   <div class="px-6">
     <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
-      {results.map((data) => (
-        <RepositoryCard repository={data} />
-      ))}
+      {results.map((data) => <RepositoryCard repository={data} />)}
     </div>
   </div>
   <MissingDataWarning />
