@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Repository } from "@types";
   import { onMount } from "svelte";
+  import { fly } from "svelte/transition";
   import RepositoryCard from "./RepositoryCard.svelte";
 
   export let repositories: Repository[];
@@ -52,7 +53,7 @@
 </script>
 
 {#each repositories as repository, i}
-  <div id={`repo-${i}`}>
+  <div id={`repo-${i}`} transition:fly>
     <RepositoryCard {repository} />
   </div>
 {/each}
