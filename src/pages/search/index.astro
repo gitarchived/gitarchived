@@ -2,15 +2,18 @@
 import Layout from "@layouts/Layout.astro";
 import Add from "@components/Add.svelte";
 import type { Repository } from "@types";
-import RepositoryCard from "@components/RepositoryCard.astro";
+import SearchResults from "@components/SearchResults.svelte";
 import MissingDataWarning from "@components/MissingDataWarning.astro";
 
 const query = Astro.url.searchParams.get("q");
+const i = Astro.url.searchParams.get("i");
+
+const index = Number(i) > 1 ? Number(i) : 1;
 
 if (!query) return Astro.redirect("/");
 
-const res = await fetch(`https://api.gitarchived.org/search?q=${query}`).then(
-  (res) => res.json() as Promise<{ results: Repository[] }>,
+const res = await fetch(`https://api.gitarchived.org/search?q=${query}&index=${index}`).then(
+  (res) => res.json() as Promise<{ results: Repository[]; continue: boolean }>,
 );
 
 const { results } = res;
@@ -21,10 +24,38 @@ const { results } = res;
     results ? (
       <div class="px-6">
         <div class="m-auto flex max-w-screen-lg flex-col gap-6 py-6">
-          {results.map((repo) => (
-            <RepositoryCard repository={repo} />
-          ))}
+          <SearchResults
+            client:load
+            repositories={res.results}
+            lastPage={!res.continue}
+            {query}
+            {index}
+          />
         </div>
+
+        <noscript>
+          {(res.continue || index > 1) && (
+            <div class="flex items-center justify-center gap-2 p-6">
+              {Array.from({ length: index }).map((_, i) => (
+                <a href={`?q=${query}&i=${i + 1}`}>
+                  <span class="rounded border border-stone-50/10 bg-stone-900 px-4 py-1 font-semibold hover:opacity-75">
+                    {i + 1}
+                  </span>
+                </a>
+              ))}
+
+              {res.continue && (
+                <a
+                  href={`?q=${query}&i=${index + 1}`}
+                  class="rounded border border-stone-50/10 bg-stone-900 px-4 py-1 font-semibold hover:opacity-75"
+                >
+                  next
+                </a>
+              )}
+            </div>
+          )}
+        </noscript>
+
         <MissingDataWarning />
       </div>
     ) : (
