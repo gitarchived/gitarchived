@@ -15,6 +15,7 @@ const { query } = Astro.props;
     <a href="/">
       <Image src={logo} alt="GitArchived" width="50" />
     </a>
+
     <Search client:load query={query} />
   </div>
 </nav>
