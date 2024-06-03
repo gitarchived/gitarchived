@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Search from "./Search.svelte";
 import logo from "@images/gitarchived.webp";
+import donate from "@images/donate.svg";
 
 interface Props {
   query?: string;
@@ -16,6 +17,11 @@ const { query } = Astro.props;
       <Image src={logo} alt="GitArchived" width="50" />
     </a>
 
-    <Search client:load query={query} />
+    <div class="flex space-x-1">
+      <Search client:load query={query} />
+      <a href="/about/donate" class="rounded-lg border border-stone-50/10 bg-stone-800 p-1.5">
+        <Image src={donate} alt="donate" width="23" />
+      </a>
+    </div>
   </div>
 </nav>
