@@ -32,15 +32,11 @@ const { title, navbar, footer, query } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex h-screen flex-col justify-between bg-stone-800 text-white">
-    <header>
-      {navbar && <Navbar {query} />}
-    </header>
+    {navbar && <Navbar {query} />}
     <main class="mb-auto">
       <slot />
     </main>
-    <footer>
-      {footer && <Footer />}
-    </footer>
+    {footer && <Footer />}
   </body>
 </html>
 
