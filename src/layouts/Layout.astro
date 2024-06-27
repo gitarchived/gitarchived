@@ -32,18 +32,19 @@ const { title, navbar, footer, query } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex h-screen flex-col justify-between bg-stone-800 text-white">
-    {navbar && <Navbar {query} />}
-    <main class="mb-auto">
+    <!--{navbar && <Navbar {query} />}-->
+    <!--<main class="mb-auto">-->
+    <main>
       <slot />
     </main>
-    {footer && <Footer />}
+    <!--{footer && <Footer />}-->
   </body>
 </html>
 
 <style>
-  * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+  /** {*/
+  /*  -webkit-box-sizing: border-box;*/
+  /*  -moz-box-sizing: border-box;*/
+  /*  box-sizing: border-box;*/
+  /*}*/
 </style>

@@ -1,26 +1,51 @@
 ---
-import { Image } from "astro:assets";
-import logo from "@images/gitarchived-long.webp";
-import Search from "@components/Search.svelte";
-import Add from "@components/Add.svelte";
-import Footer from "@components/Footer.astro";
+//import { Image } from "astro:assets";
+//import logo from "@images/gitarchived-long.webp";
+//import Search from "@components/Search.svelte";
+//import Add from "@components/Add.svelte";
+//import Footer from "@components/Footer.astro";
 import Layout from "@layouts/Layout.astro";
 ---
 
 <Layout title="GitArchived">
-  <div class="flex h-dvh w-full flex-col bg-stone-800">
-    <div class="w-full bg-yellow-400 px-2 text-black">
-      <div class="m-auto flex w-full max-w-screen-lg justify-center py-1 text-center font-bold">
-        <span>
-          GitArchived will be shoutdown on 06/26/2022. Please, download any data before this date.
-        </span>
-      </div>
-    </div>
-    <main class="flex h-full w-full flex-col items-center justify-center gap-2 px-6">
-      <Image src={logo} alt="GitArchived's logo" height="125" />
-      <Search client:load />
-      <span>or <Add client:load />.</span>
-    </main>
-    <Footer />
-  </div>
+  <!--<div class="flex h-dvh w-full flex-col bg-stone-800">-->
+  <!--<div class="w-full bg-yellow-400 px-2 text-black">-->
+  <!--  <div class="m-auto flex w-full max-w-screen-lg justify-center py-1 text-center font-bold">-->
+  <!--    <span>-->
+  <!--      GitArchived will be shoutdown on 06/26/2022. Please, download any data before this date.-->
+  <!--    </span>-->
+  <!--  </div>-->
+  <!--</div>-->
+  <!--<main class="flex h-full w-full flex-col items-center justify-center gap-2 px-6">-->
+  <main class="flex min-h-screen flex-row items-center justify-center p-6">
+    <!--<Image src={logo} alt="GitArchived's logo" height="125" />-->
+    <!--<Search client:load />-->
+    <!--<span>or <Add client:load />.</span>-->
+    <p class="text-lg md:px-[25%] md:text-xl">
+      Dear GitArchived Community,<br /><br />
+
+      We regret to inform you that GitArchived has been officially archived as of this week. As a
+      result, the archive is no longer available for download from our content delivery networks.<br
+      /><br />
+
+      This difficult decision has been made to end the project indefinitely due to reasons we prefer
+      not to specify. We understand that this news may disappoint many of you who have found our
+      service valuable.<br />
+      <br />
+
+      Additionally, the GitHub repositories have been archived, and the updater has been shut down.<br
+      /><br />
+
+      We would like to take this opportunity to express our deep gratitude to all of you who have
+      supported and believed in the GitArchived project. Your enthusiasm and support have been
+      crucial to the journey we have undertaken.<br /><br />
+
+      Thank you once again for being with us on this adventure.<br /><br />
+
+      Best regards,<br />
+      GitArchived Team
+    </p>
+  </main>
+  <!--</div>-->
+  <!--<Footer />-->
 </Layout>
